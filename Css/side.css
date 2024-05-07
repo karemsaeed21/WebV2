@@ -1,0 +1,119 @@
+/* .close {
+    position: absolute;
+    right: 570px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.sidenav {
+    width: 250px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 35px;
+    color: #e50914;
+    display: block;
+    transition: ease 0.5s;
+}
+
+.sidenav a:hover {
+    color: rgb(119, 0, 0);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.btt {
+    color: red;
+} */
+/* Close button style */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+/* Links inside the sidebar */
+.sidenav a {
+    padding: 15px 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #e50914;
+    display: block;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+/* Hover effect for links */
+.sidenav a:hover {
+    color: #770000;
+}
+
+/* Button to close the sidebar */
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 30px;
+    margin-left: 50px;
+    color: #fff;
+}
+
+/* Additional style for back to top button */
+.btt {
+    color: #e50914;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 20px;
+    background-color: #000;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect for back to top button */
+.btt:hover {
+    background-color: #770000;
+}
+
+/* Sidebar container */
+.sidenav {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -50px; 
+    background-color: #000;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
