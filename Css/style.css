@@ -378,6 +378,9 @@ th {
 
 /* Media query for phones */
 @media screen and (max-width: 1023px) {
+    iframe {
+            width: 100%;
+        }
     header {
         padding: 10px 20px;
         /* Adjust padding for smaller screens */
@@ -505,4 +508,18 @@ th {
         margin: 0 auto 20px;
         /* Adjust margin */
     }
+    footer{
+        text-align: center;
+    }
+    /* .technology-container ul{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 5%;
+        
+    }
+    .technology-container ul li {
+        margin: 10px;
+        width: 100%;
+    } */
+    
 }

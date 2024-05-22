@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="checkCookies()">
     <div id="mySidenav" class="sidenav" style="width: 0;">
         <a class="closebtn" onclick="closeNav()">x</a>
         <a href="Contact.htm">Contact Us</a>
@@ -35,14 +35,14 @@
             <!-- <a href="Contact.htm">Contact Us</a>
             <a href="login.html">Log In</a> -->
             <!-- <a href="#price">$</a> -->
-                <span class="btt" style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+                <span class="btt" style="font-size:30px;cursor:pointer" onclick="toggleNav()">☰</span>
         </nav>
     </header>
     <section class="main">
         <div>
             <h2>Hello, We are <span class="as">ASTERISK*</span><br><span class="we">Web Developers</span></h2>
             <h3>We build your website From Scratch</h3>
-            <a href="who.html" class="main-btn">Who We Are</a>
+            <a href="who.html" class="main-btn" onmouseover="this">Who We Are</a>
             <div class="social-icons">
                 <a href="https://www.facebook.com/karem.saeed.399/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
                 <!-- <a href="#"><i class="fa-brands fa-twitter"></i></a> -->
@@ -92,11 +92,11 @@
         <div class="content">
             <div class="technology-container">
                 <ul>
-                    <li>HTML (HyperText Markup Language) <br><iframe width="100%" height="315" src="https://www.youtube.com/embed/ok-plXXHlWw?si=iuFUSOxV55BEGsrg"
+                    <li>HTML<br><iframe width="100%" height="315" src="https://www.youtube.com/embed/ok-plXXHlWw?si=iuFUSOxV55BEGsrg"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe></li>
-                    <li>CSS (Cascading Style Sheets) <br><iframe width="100%" height="315" src="https://www.youtube.com/embed/OEV8gMkCHXQ?si=AChG1TnY7uRZto2f"
+                    <li>CSS <br><iframe width="100%" height="315" src="https://www.youtube.com/embed/OEV8gMkCHXQ?si=AChG1TnY7uRZto2f"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe></li>
@@ -108,12 +108,6 @@
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe></li>
-                    <!-- <li>Node.js - JavaScript runtime for server-side scripting</li>
-                    <li>Express - Web application framework for Node.js</li>
-                    <li>MongoDB - NoSQL database for modern applications</li>
-                    <li>Git - Version control system</li>
-                    <li>Webpack - Module bundler</li>
-                    <li>Sass - Preprocessor scripting language that is interpreted into CSS</li> -->
                 </ul>
             </div>
         </div>
@@ -233,8 +227,20 @@
     </section>
     <footer>
         <p>&copy; 2023 ASTERISK TEAM</p>
+        <p id="dat" style="color: #e50914; text-align: left;"></p>
     </footer>
     <script src="Js/kar.js"></script>
+    <script>
+        function checkCookies(){
+            let text="";
+            if(navigator.cookieEnabled==true){
+                text = "Cookies are enabled";
+            }else{
+                text = "Cookies are not enabled";
+            }
+            window.alert(text);
+        }
+    </script>
 </body>
 
 </html>
