@@ -3,7 +3,7 @@ $conn = new mysqli("mysql-2ff4c4f8-bedo2054-d043.c.aivencloud.com", "avnadmin", 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+//echo "Connected successfully";
 ?>
 
 

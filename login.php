@@ -1,22 +1,58 @@
 
 <?php
 include 'header.php';
+session_start();
 if (isset($_POST['submit'])) {
+    //Sign up
     $name = mysqli_real_escape_string($conn, $_POST['uname']);
     $email = mysqli_real_escape_string($conn, $_POST['cemail']);
-    $password = mysqli_real_escape_string($conn, $_POST['pwd']);
-    $cpassword = mysqli_real_escape_string($conn, $_POST['cpwd']);
-    $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password ='$password'") or die("Error: " . mysqli_error($conn));
+    $password = mysqli_real_escape_string($conn, md5($_POST['pwd'])); // Hash the password with MD5
+    $cpassword = mysqli_real_escape_string($conn, md5($_POST['cpwd'])); // Hash the confirm password with MD5
+
+    // Check if user already exists
+    $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email'") or die("Error: " . mysqli_error($conn));
     if(mysqli_num_rows($select) > 0){
         $message[] = 'User already Exist';
-    }else{
-    mysqli_query($conn, "INSERT INTO `user_form`(`name`, `email`, `password`) VALUES ('$name','$email','$password')") or die("Error: " . mysqli_error($conn));
-    $message[] = 'User Added Successfully';
-    
+    } else {
+        // If user does not exist, add them to the database
+        mysqli_query($conn, "INSERT INTO `user_form`(`name`, `email`, `password`) VALUES ('$name','$email','$password')") or die("Error: " . mysqli_error($conn));
+        $message[] = 'User Added Successfully';
+        header('location:login.php');
+    }
+}
+
+if (isset($_POST['login'])) {
+    // Login
+//    $email = mysqli_real_escape_string($conn, $_POST['email']);
+//    $password = mysqli_real_escape_string($conn, $_POST['password']);
+//
+//    $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password ='$password'") or die("Error: " . mysqli_error($conn));
+//    if(mysqli_num_rows($select) > 0){
+//        $row = mysqli_fetch_assoc($select);
+//        $_SESSION['password'] = $row['password'];
+//        $_SESSION['email'] = $row['email'];
+//        $row = mysqli_fetch_assoc($select);
+//        $_SESSION['user_id'] = $row['iduserform'];
+//        header('location:products.html');
+//    } else {
+//        $message[] = 'Invalid login credentials';
+//    }
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+
+    $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$password'") or die('query failed');
+
+if(mysqli_num_rows($select) > 0){
+    $row = mysqli_fetch_assoc($select);
+    $_SESSION['user_id'] = $row['iduser_form'];
+    $_SESSION['user_name'] = $row['name']; // Store user name in session
+    $_SESSION['user_email'] = $row['email']; // Store user email in session
+    header('location:index.php');
+}else{
+    $message[] = 'incorrect password or email!';
 }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,12 +88,12 @@ if(isset($message)){
                     </div>
             </div>
             <div class="form-control signin-form">
-                <form action="#">
-                    <h2>Signin</h2>
-                    <input type="text" placeholder="Username" required />
-                    <input type="password" placeholder="Password" required />
-                    <button>Signin</button>
-                </form>
+<form action="login.php" method="post">
+    <h2>Signin</h2>
+    <input name="email" type="text" placeholder="Email" required />
+    <input name="password" type="password" placeholder="Password" required />
+    <input type="submit" name="login" class="btn" value="Signin">
+</form>
                 <span>or signin with</span>
                     <div class="socials">
                         <a href="https://www.facebook.com/login"><i class="fab fa-facebook-f"></i></a>
